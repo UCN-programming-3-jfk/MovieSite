@@ -23,9 +23,7 @@ public class InMemoryMovieDAO : IMovieDAO
 
     public bool Delete(int id)
     {
-        var movie = Get(id);
-        if (movie == null) { return false; }
-        return Delete(id);
+        return movies.RemoveAll(movie => movie.Id == id) > 0;
     }
 
     public IEnumerable<Movie> GetAll()

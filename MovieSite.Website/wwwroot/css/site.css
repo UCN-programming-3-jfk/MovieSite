@@ -16,3 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+nav.navbar a {
+
+color:white;
+font-weight:bold;
+}

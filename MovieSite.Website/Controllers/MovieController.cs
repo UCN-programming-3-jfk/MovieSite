@@ -6,22 +6,22 @@ namespace MovieWebSiteDotNet6.Controllers
 {
     public class MovieController : Controller
     {
-        public IMovieDAO DataAccessLayer { get; set; }
+        private IMovieDAO _dataAccessLayer;
         public MovieController(IMovieDAO dataAccess)
         {
-            DataAccessLayer = dataAccess;
+            _dataAccessLayer = dataAccess;
         }
 
         // GET: MovieController
         public ActionResult Index()
         {
-            return View(DataAccessLayer.GetAll());
+            return View(_dataAccessLayer.GetAll());
         }
 
         // GET: MovieController/Details/5
         public ActionResult Details(int id)
         {
-            return View(DataAccessLayer.Get(id));
+            return View(_dataAccessLayer.Get(id));
         }
 
         // GET: MovieController/Create
@@ -33,10 +33,11 @@ namespace MovieWebSiteDotNet6.Controllers
         // POST: MovieController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Movie collection)
+        public ActionResult Create(Movie movie)
         {
             try
             {
+                _dataAccessLayer.Add(movie);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -48,7 +49,7 @@ namespace MovieWebSiteDotNet6.Controllers
         // GET: MovieController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(DataAccessLayer.Get(id));
+            return View(_dataAccessLayer.Get(id));
         }
 
         // POST: MovieController/Edit/5
@@ -58,7 +59,7 @@ namespace MovieWebSiteDotNet6.Controllers
         {
             try
             {
-                DataAccessLayer.Update(movie);
+                _dataAccessLayer.Update(movie);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -70,7 +71,7 @@ namespace MovieWebSiteDotNet6.Controllers
         // GET: MovieController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(DataAccessLayer.Get(id));
+            return View(_dataAccessLayer.Get(id));
         }
 
         // POST: MovieController/Delete/5
@@ -80,7 +81,7 @@ namespace MovieWebSiteDotNet6.Controllers
         {
             try
             {
-                View(DataAccessLayer.Delete(id));
+                View(_dataAccessLayer.Delete(id));
                 return RedirectToAction(nameof(Index));
             }
             catch
