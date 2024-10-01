@@ -6,6 +6,9 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        //register the InMemoryMovieDAO as a singleton
+        //so any controller class that needs an IMovieDAO will get the same instance
+        //this makes it possible to keep the list of movies in memory
         builder.Services.AddSingleton<IMovieDAO, InMemoryMovieDAO>();
 
         // Add services to the container.
