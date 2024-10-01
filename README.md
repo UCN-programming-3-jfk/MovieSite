@@ -3,7 +3,8 @@ This repository contains an ASP.NET MVC solution with two projects:
 - MovieSite.DAL (the data access layer)
 - MovieSite.Website (the actual website)
 
-<img width="472" alt="image" src="https://github.com/user-attachments/assets/8a9acb63-1252-4cef-b5c2-9e22ec4651a2">
+<img width="599" alt="image" src="https://github.com/user-attachments/assets/43597270-0c24-49f7-8dac-d9b2deec8bc6">
+
 
 ## MovieSite.DAL
 This project defines the interface for the DAO classes that the website's Movie controller depends on for CRUD operations. 
