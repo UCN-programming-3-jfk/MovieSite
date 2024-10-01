@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<MovieSite.DAL.Model.Movie>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Complete movie list";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,9 +12,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
@@ -34,10 +31,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                    <b> @Html.DisplayFor(modelItem => item.Title)</b>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -49,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.ImdbScore)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id  }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id})
+               @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-primary btn-large" } )
+                    <br /> @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success btn-large" })
+                    <br /> @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-large" })
             </td>
         </tr>
 }

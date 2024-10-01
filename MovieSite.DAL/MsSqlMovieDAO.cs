@@ -1,7 +1,7 @@
 ﻿using MovieSite.DAL;
 using MovieSite.DAL.Model;
 
-namespace MovieDataAccessLayer;
+namespace MovieSite.DAL.Model;
 public class MsSqlMovieDAO : IMovieDAO
 {
     public int Add(Movie movie){throw new NotImplementedException();}
