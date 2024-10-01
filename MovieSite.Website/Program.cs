@@ -25,12 +25,16 @@ public class Program
         }
 
         app.UseHttpsRedirection();
+
+        //enable the use of static files in the wwwroot folder
         app.UseStaticFiles();
 
+        //enable routing so the app can use controllers based on the URI
         app.UseRouting();
 
         app.UseAuthorization();
 
+        //map the default route to the Home controller and the Index action
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
